@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novato, Up Close | Nathan Irving, Coldwell Banker Realty</title>
+<meta name="description" content="Free tools for Novato neighbors: see what's being built near you, explore Hamilton in 3D, and get a plain-language monthly update. From Nathan Irving, Coldwell Banker Realty.">
+<meta property="og:title" content="Novato, Up Close">
+<meta property="og:description" content="See what's being built near you, explore Hamilton in 3D, and get a monthly plain-language update on Novato.">
+<meta property="og:image" content="img/novato.jpg">
+<link rel="icon" href="img/headshot.jpg">
+<style>
+  :root { --navy: #012169; --navy2: #0b2f7d; --gold: #B08D57; --ink: #1d2433; --muted: #5b6474; --line: #e3e6ec; --bg: #f5f6f8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; }
+  a { color: var(--navy); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  header { background: var(--navy); color: #fff; border-bottom: 3px solid var(--gold); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; flex-wrap: wrap; }
+  header img { height: 40px; display: block; }
+  header .contact { font-size: .82rem; text-align: right; line-height: 1.4; }
+  header .contact a { color: var(--gold); font-weight: bold; text-decoration: none; }
+  .hero { background: linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%); color: #fff; padding: 34px 0 40px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 300px; gap: 36px; align-items: center; }
+  .hero h1 { font-size: 2.3rem; line-height: 1.15; }
+  .hero h1 span { color: var(--gold); }
+  .hero p.lead { font-size: 1.05rem; color: #dbe2f3; margin: 12px 0 20px; max-width: 560px; }
+  .near { background: #fff; color: var(--ink); border-radius: 10px; padding: 14px; max-width: 560px; box-shadow: 0 10px 30px rgba(0,0,0,.25); border-top: 4px solid var(--gold); }
+  .near label { display: block; font-weight: bold; color: var(--navy); margin-bottom: 7px; }
+  .near .row { display: flex; gap: 8px; }
+  .near input { flex: 1; min-width: 0; padding: 11px 12px; border: 1px solid #c8cdd6; border-radius: 5px; font: 1rem Arial, sans-serif; }
+  .near input:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+  .near .hint { font-size: .78rem; color: var(--muted); margin-top: 6px; }
+  .btn { display: inline-block; border: none; cursor: pointer; font: bold .92rem Arial, sans-serif; background: var(--gold); color: #fff; padding: 11px 16px; border-radius: 5px; text-decoration: none; white-space: nowrap; }
+  .btn.navy { background: var(--navy); }
+  .btn.ghost { background: transparent; border: 2px solid var(--gold); color: #fff; padding: 9px 14px; }
+  .cta { display: flex; gap: 10px; flex-wrap: wrap; }
+  html { scroll-behavior: smooth; }
+  .me { text-align: center; }
+  .me img { width: 210px; height: 210px; border-radius: 50%; border: 5px solid var(--gold); object-fit: cover; background: #f4f1ea; }
+  .me .name { font-weight: bold; font-size: 1.1rem; margin-top: 10px; }
+  .me .role { color: #cdd6ea; font-size: .86rem; }
+  section { padding: 38px 0; }
+  h2 { color: var(--navy); font-size: 1.5rem; margin-bottom: 6px; }
+  .sub { color: var(--muted); margin-bottom: 20px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.08); display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid var(--line); transition: transform .15s, box-shadow .15s; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.14); }
+  .card .pic { position: relative; aspect-ratio: 16 / 9; background: #dfe7ee center / cover no-repeat; }
+  .card .badge { position: absolute; left: 10px; top: 10px; background: var(--navy); color: #fff; font-size: .68rem; font-weight: bold; letter-spacing: .5px; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
+  .card .badge.gold { background: var(--gold); }
+  .card .body { padding: 15px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+  .card h3 { color: var(--navy); font-size: 1.12rem; margin-bottom: 6px; }
+  .card p { font-size: .9rem; color: #3b4352; flex: 1; }
+  .card .stat { font-size: .82rem; color: var(--muted); margin-top: 10px; }
+  .card .stat b { color: var(--navy); }
+  .card .go { margin-top: 12px; font-weight: bold; color: var(--navy); font-size: .9rem; }
+  .card .go::after { content: ' \2192'; color: var(--gold); }
+  .dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,.5); }
+  .signup { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .signup .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+  .signup ul { margin: 10px 0 0 18px; color: #3b4352; font-size: .93rem; }
+  form.sf label { display: block; font-size: .8rem; font-weight: bold; color: var(--navy); margin-top: 9px; }
+  form.sf input { display: block; width: 100%; margin-top: 3px; padding: 10px; border: 1px solid #c8cdd6; border-radius: 5px; font: .95rem Arial, sans-serif; }
+  form.sf input:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+  form.sf .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  form.sf .err { color: #b42318; font-size: .84rem; font-weight: bold; min-height: 1.1em; margin: 8px 0 4px; }
+  form.sf .consent { font-size: .7rem; color: var(--muted); margin-top: 8px; }
+  form.sf .ok { color: var(--navy); font-weight: bold; }
+  .about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .about p { color: #3b4352; margin-bottom: 10px; }
+  .about .contact-box { background: #fff; border-radius: 10px; padding: 18px; border: 1px solid var(--line); }
+  .about .contact-box div { margin-bottom: 6px; }
+  footer { background: var(--navy); color: #c9d2e6; font-size: .74rem; padding: 18px 0; line-height: 1.6; }
+  footer a { color: var(--gold); }
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 20px; }
+    .me { order: -1; display: flex; align-items: center; gap: 14px; text-align: left; }
+    .me img { width: 84px; height: 84px; border-width: 3px; }
+    .me .name { margin-top: 0; }
+    .hero h1 { font-size: 1.8rem; }
+    .cards { grid-template-columns: 1fr; }
+    .signup .wrap, .about .wrap { grid-template-columns: 1fr; }
+    header .contact { text-align: left; font-size: .76rem; }
+  }
+  @media (max-width: 420px) { .near .row { flex-direction: column; } .hero h1 { font-size: 1.6rem; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img src="img/logo-white.png" alt="Nathan Irving, REALTOR&reg;">
+    <div class="contact"><b>Nathan Irving, REALTOR&reg;</b> &middot; Coldwell Banker Realty<br><a href="tel:+14152094864">415.209.4864</a> &middot; <a href="mailto:nathan.irving@cbrealty.com">nathan.irving@cbrealty.com</a></div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Novato, <span>up close</span></h1>
+      <p class="lead">Free, plain-language tools for Novato neighbors: see what&rsquo;s being built near you, explore your neighborhood in 3D, and get a short monthly update on what&rsquo;s changing.</p>
+      <div class="cta">
+        <a class="btn" href="#explore">Start exploring</a>
+        <a class="btn ghost" href="#signup">Get the monthly update</a>
+      </div>
+    </div>
+    <div class="me">
+      <img src="img/headshot.jpg" alt="Nathan Irving">
+      <div><div class="name">Hi, I&rsquo;m Nathan Irving</div><div class="role">Novato REALTOR&reg; &middot; Coldwell Banker Realty</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="explore">
+  <div class="wrap">
+    <h2>Explore</h2>
+    <p class="sub">Pick a tool. Everything here is free and works on your phone.</p>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <div>
+      <h2>The monthly &ldquo;What&rsquo;s changing in Novato&rdquo; update</h2>
+      <p class="sub" style="margin-bottom:0">One short email a month, in plain language:</p>
+      <ul>
+        <li>New projects filed with the city, and what they&rsquo;d mean for the neighborhood</li>
+        <li>What got approved, and upcoming hearings where you can speak up</li>
+        <li>A quick look at the Novato housing market</li>
+      </ul>
+    </div>
+    <form class="sf" id="sf" novalidate>
+      <label for="s-name">Name</label><input id="s-name" name="name" autocomplete="name">
+      <label for="s-email">Email</label><input id="s-email" name="email" type="email" autocomplete="email">
+      <label for="s-hood">Your neighborhood (optional)</label><input id="s-hood" name="neighborhood" placeholder="e.g. Hamilton, San Marin, Downtown">
+      <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="err" id="s-err" role="alert"></div>
+      <button class="btn navy" type="submit" id="s-btn">Sign me up</button>
+      <div class="consent" id="s-consent"></div>
+    </form>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div>
+      <h2>About Nathan</h2>
+      <p>I&rsquo;m a REALTOR&reg; with Coldwell Banker Realty, working in Novato and across Marin. I built these tools because what&rsquo;s happening in town is hard to follow: the information is public, but it&rsquo;s spread across city pages and PDFs.</p>
+      <p>If you&rsquo;re thinking about buying or selling, or just curious what a project means for your street, I&rsquo;m happy to talk. No pressure.</p>
+    </div>
+    <div class="contact-box">
+      <div><b>Nathan Irving, REALTOR&reg;</b></div>
+      <div>Coldwell Banker Realty &middot; DRE# 02414117</div>
+      <div>Phone/text: <a href="tel:+14152094864">415.209.4864</a></div>
+      <div>Email: <a href="mailto:nathan.irving@cbrealty.com">nathan.irving@cbrealty.com</a></div>
+      <div style="margin-top:12px"><a class="btn navy" href="tel:+14152094864">Call or text Nathan</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Nathan Irving, REALTOR&reg; &middot; DRE# 02414117 &middot; Coldwell Banker Realty &middot; Equal Housing Opportunity.
+    Information deemed reliable but not guaranteed. Project information is summarized from the City of Novato Planning Division; these tools are not affiliated with the City of Novato.
+    Aerial images: USDA NAIP via USGS. Your information is never sold or shared.
+  </div>
+</footer>
+
+<script>
+  // Links: change these when a piece is published or moved.
+  window.HUB_CONFIG = {
+    tracker: '/novato-changes/',
+    hamilton: '/hamilton-3d/',
+    listing: '/24-cottage-ln/',
+    form: {
+      endpoint: 'https://formspree.io/f/mjybonej',
+      subject: 'Novato changes update signup',
+      consent: 'By signing up, you agree that Nathan Irving (Coldwell Banker Realty, DRE# 02414117) may email you the monthly update and follow up about real estate. Your information is never sold or shared.'
+    }
+  };
+</script>
+<script src="/novato-changes/areas/novato/projects.js" data-projects onerror="window.NOVATO_PROJECTS = null"></script>
+<script>
+(function () {
+  var C = window.HUB_CONFIG, P = window.NOVATO_PROJECTS;
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  // Live numbers from the tracker's data
+  var trackerStat = '';
+  if (P && P.list) {
+    var b = P.list.filter(function (p) { return p.cat !== 'wireless'; });
+    var homes = b.reduce(function (s, p) { return s + (p.units || 0); }, 0);
+    var review = P.list.filter(function (p) { return p.cat === 'review'; }).length;
+    trackerStat = '<b>' + b.length + '</b> projects &middot; <b>' + homes.toLocaleString() + '</b> homes &middot; <b>' + review + '</b> under review now';
+  }
+
+  var cards = [
+    { href: C.tracker, img: 'img/novato.jpg', badge: 'Updated monthly', title: 'What’s changing in Novato',
+      text: 'Every project on the city’s planning list on one map: new homes, shops, storage and cell sites, with status and links to the official city pages.',
+      stat: trackerStat, go: 'See the map', dots: true },
+    { href: C.hamilton, img: 'img/hamilton.jpg', badge: '3D', title: 'Hamilton in 3D',
+      text: 'Fly over every home in Hamilton, built from public map, county and lidar data. Find your street and tap any home for its lot details.',
+      stat: '<b>1,961</b> buildings &middot; real heights from lidar', go: 'Explore Hamilton' },
+    { href: C.listing, img: 'img/24-cottage.jpg', badge: 'For sale', badgeGold: true, title: '24 Cottage Ln, Hamilton',
+      text: '3 bed, 2.5 bath, 1,768 sq ft in the Hamilton Cottages 62+ community. Photos, details and a 3D fly-through.',
+      stat: '<b>$999,000</b> &middot; includes a 3D fly-through', go: 'See the home', newTab: true }
+  ];
+  // Pins on the tracker card's photo are illustrative (positions match the downtown crop roughly).
+  var dotHtml = '<span class="dot" style="left:56%;top:42%;background:#012169"></span><span class="dot" style="left:47%;top:30%;background:#C26A00"></span>' +
+    '<span class="dot" style="left:62%;top:58%;background:#012169"></span><span class="dot" style="left:38%;top:62%;background:#6b7280"></span>';
+  document.getElementById('cards').innerHTML = cards.filter(function (c) { return c.href; }).map(function (c) {
+    return '<a class="card" href="' + esc(c.href) + '"' + (c.newTab ? ' target="_blank" rel="noopener"' : '') + '>' +
+      '<div class="pic" style="background-image:url(' + c.img + ')"><span class="badge' + (c.badgeGold ? ' gold' : '') + '">' + c.badge + '</span>' + (c.dots ? dotHtml : '') + '</div>' +
+      '<div class="body"><h3>' + esc(c.title) + '</h3><p>' + esc(c.text) + '</p>' + (c.stat ? '<div class="stat">' + c.stat + '</div>' : '') +
+      '<div class="go">' + c.go + '</div></div></a>';
+  }).join('');
+
+  // Monthly update signup (Formspree)
+  var F = C.form, form = document.getElementById('sf'), err = document.getElementById('s-err'), btn = document.getElementById('s-btn');
+  document.getElementById('s-consent').textContent = F.consent;
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault(); err.textContent = '';
+    var name = form.name.value.trim(), email = form.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { err.textContent = email ? 'That email doesn’t look right.' : 'Please enter your email.'; form.email.focus(); return; }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var d = new FormData();
+    d.append('name', name); d.append('email', email); d.append('neighborhood', form.neighborhood.value.trim());
+    d.append('_subject', F.subject); d.append('source', 'novato-hub'); d.append('_gotcha', form._gotcha.value);
+    fetch(F.endpoint, { method: 'POST', body: d, headers: { Accept: 'application/json' } }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.innerHTML = '<p class="ok">Thanks' + (name ? ', ' + esc(name.split(' ')[0]) : '') + '! You’re on the list for the monthly update.</p>';
+    }).catch(function () { btn.disabled = false; btn.textContent = 'Sign me up'; err.textContent = 'Something went wrong. Please try again, or email nathan.irving@cbrealty.com.'; });
+  });
+})();
+</script>
+</body>
+</html>
